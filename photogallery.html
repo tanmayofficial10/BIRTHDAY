@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahima's Birthday Gallery</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            text-align: center;
+            padding: 20px;
+            animation: gradientAnimation 10s infinite alternate linear;
+            background: linear-gradient(45deg, #ff9aa2, #ffdac1, #fcf6bd, #d0f4de, #a2d2ff);
+            background-size: 400% 400%;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            background: rgba(255, 105, 180, 0.9);
+            color: white;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .photo {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .caption {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .pagination button {
+            background: hotpink;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .pagination button:hover {
+            background: darkred;
+        }
+
+        .pagination button:disabled {
+            background: lightgray;
+            cursor: not-allowed;
+        }
+
+        .continue-btn {
+            background: hotpink;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .continue-btn:hover {
+            background: darkred;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music (Autoplay & Loop) -->
+<audio id="bg-music" autoplay loop>
+    <source src="Hehe Ringtone.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+    <header>Mahima's - Photo Gallery</header>
+
+    <div class="gallery-container" id="gallery">
+        <!-- Photos will be inserted here by JavaScript -->
+    </div>
+
+    <div class="pagination" id="pagination">
+        <!-- Navigation buttons will be inserted here by JavaScript -->
+    </div>
+
+    <script>
+        const photos = [];
+        for (let i = 1; i <= 36; i++) {
+            photos.push({
+                src: `image${i}.jpg`,
+                caption: `Mahima's timeless beauty - Photo ${i}`
+            });
+        }
+
+        const photosPerPage = 6;
+        let page = 1;
+
+        function displayPhotos() {
+            const gallery = document.getElementById("gallery");
+            gallery.innerHTML = "";
+
+            const start = (page - 1) * photosPerPage;
+            const end = start + photosPerPage;
+            const currentPhotos = photos.slice(start, end);
+
+            currentPhotos.forEach(photo => {
+                const photoDiv = document.createElement("div");
+                photoDiv.classList.add("photo");
+                photoDiv.innerHTML = `
+                    <img src="${photo.src}" alt="${photo.caption}">
+                    <div class="caption">${photo.caption}</div>
+                `;
+                gallery.appendChild(photoDiv);
+            });
+
+            updateButtons();
+        }
+
+        function updateButtons() {
+            const pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
+
+            if (page < Math.ceil(photos.length / photosPerPage)) {
+                pagination.innerHTML = `
+                    <button id="prev" ${page === 1 ? "disabled" : ""}>Previous</button>
+                    <button id="next">Next</button>
+                `;
+            } else {
+                pagination.innerHTML = `<button class="continue-btn" onclick="window.location.href='thanks.html'">Continue</button>`;
+            }
+
+            document.getElementById("prev")?.addEventListener("click", () => { page--; displayPhotos(); });
+            document.getElementById("next")?.addEventListener("click", () => { page++; displayPhotos(); });
+        }
+
+        displayPhotos();
+    </script>
+
+</body>
+</html>

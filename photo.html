@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mahima</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(45deg, #ffcc00, #ffdd44, #ffbb00);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            color: #3d2900;
+            text-align: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-top: 50px;
+            text-shadow: 3px 3px 8px rgba(255, 223, 0, 0.6);
+            font-weight: bold;
+        }
+
+        .container, .gallery-container {
+            display: none;
+            padding: 20px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 3px 3px 15px rgba(255, 185, 0, 0.6);
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .message {
+            font-size: 1.4em;
+            margin: 20px auto;
+            max-width: 600px;
+            line-height: 1.8;
+            background: rgba(255, 235, 150, 0.2);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 3px 3px 15px rgba(255, 215, 0, 0.5);
+            font-style: italic;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: rgba(255, 200, 50, 0.9);
+            color: #3d2900;
+            text-decoration: none;
+            font-size: 1.3em;
+            border-radius: 10px;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(255, 185, 0, 0.5);
+        }
+
+        .btn:hover {
+            background: rgba(255, 170, 0, 1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music (Autoplay & Loop) -->
+<audio id="bg-music" autoplay loop>
+    <source src="HBD1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+    <!-- 📸 Gallery Page (First Page) -->
+    <div class="gallery-container" id="galleryPage">
+    <h1>Most Beautiful Lady of Universe!!!!!👀</h1>
+    <div class="gallery">
+        <img src="photo1.jpg" alt="Mahima Photo 1">
+        <img src="photo2.jpg" alt="Mahima Photo 2">
+        <img src="photo3.jpg" alt="Mahima Photo 3">
+        <img src="photo4.jpg" alt="Mahima Photo 4">
+        <img src="photo5.jpg" alt="Mahima Photo 5">
+        <img src="photo6.jpg" alt="Mahima Photo 6">
+        <img src="photo7.jpg" alt="Mahima Photo 7">
+        <img src="photo8.jpg" alt="Mahima Photo 8">
+        <img src="photo9.jpg" alt="Mahima Photo 9">
+    </div>
+    <button class="btn" onclick="showMessagePage()">Next: A Message for You</button>
+</div>
+
+    <!-- 🎉 Message Page (Second Page) -->
+    <div class="container" id="messagePage">
+        <h1>Happy Birthday, Mahima!❤️</h1>
+        <p class="message">
+            The world is filled with light, but none shines brighter than you.  
+            Your beauty isn’t just in the way you look—it’s in the way you "care, love, and inspire".  
+            You are not just a person; you are "a universe of kindness, warmth, and strength".  
+            <br><br>
+            On your special day, always remember:  
+            "You can be the Light of Hope even in the Darkest Days of Life."
+            No storm, no shadow, no fear can take away the golden glow that you radiate.  
+            You are one of a kind, irreplaceable, and endlessly loved.  
+            <br><br>
+            Happy Birthday, Mahima."Keep shining like the sun you are". And always been loving you!❤️
+        </p>
+        <a href="warning.html" class="btn">
+        <button class="btn">Click here if you want see your PHOTO GALLERY👀 </button></</a>
+    </div>
+
+    <script>
+        function showMessagePage() {
+            document.getElementById('galleryPage').style.display = 'none';
+            document.getElementById('messagePage').style.display = 'block';
+        }
+
+        function showGalleryPage() {
+            document.getElementById('messagePage').style.display = 'none';
+            document.getElementById('galleryPage').style.display = 'block';
+        }
+
+        // Show the gallery page first on load
+        document.getElementById('galleryPage').style.display = 'block';
+    </script>
+
+</body>
+</html>
