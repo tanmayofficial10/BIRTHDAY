@@ -16,9 +16,9 @@
         body {
             text-align: center;
             padding: 20px;
-            animation: gradientAnimation 10s infinite alternate linear;
-            background: linear-gradient(45deg, #ff9aa2, #ffdac1, #fcf6bd, #d0f4de, #a2d2ff);
+            background: linear-gradient(45deg, #ff9aa2, #ffb6c1, #ffda79, #ffb347, #ff7eb3);
             background-size: 400% 400%;
+            animation: gradientAnimation 8s infinite alternate linear;
         }
 
         @keyframes gradientAnimation {
@@ -49,14 +49,10 @@
         }
 
         .photo {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
         }
 
         .photo img {
@@ -117,13 +113,8 @@
     </style>
 </head>
 <body>
-    <!-- Background Music (Autoplay & Loop) -->
-<audio id="bg-music" autoplay loop>
-    <source src="Hehe Ringtone.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
 
-    <header>Mahima's - Photo Gallery</header>
+    <header>Mahima's Birthday Celebration - Photo Gallery</header>
 
     <div class="gallery-container" id="gallery">
         <!-- Photos will be inserted here by JavaScript -->
@@ -134,13 +125,44 @@
     </div>
 
     <script>
-        const photos = [];
-        for (let i = 1; i <= 36; i++) {
-            photos.push({
-                src: `image${i}.jpg`,
-                caption: `Mahima's timeless beauty - Photo ${i}`
-            });
-        }
+        const photos = [
+            { src: "image1.jpg", caption: "Mahima, the brightest light in every room." },
+            { src: "image2.jpg", caption: "A smile that makes birthdays even warmer." },
+            { src: "image3.jpg", caption: "Candlelight shines, but her glow is unmatched." },
+            { src: "image4.jpg", caption: "Beauty wrapped in joy and laughter." },
+            { src: "image5.jpg", caption: "The essence of grace, captured in time." },
+            { src: "image6.jpg", caption: "Like a birthday wish, she brings happiness to all." },
+            { src: "image7.jpg", caption: "A moment of celebration, a lifetime of beauty." },
+            { src: "image8.jpg", caption: "Her presence is the real gift today." },
+            { src: "image9.jpg", caption: "Every sparkle in her eyes tells a story." },
+            { src: "image10.jpg", caption: "Wrapped in love, glowing with happiness." },
+            { src: "image11.jpg", caption: "A perfect birthday moment, just like her." },
+            { src: "image12.jpg", caption: "Her joy makes every candle shine brighter." },
+            { src: "image13.jpg", caption: "Every frame captures her natural beauty." },
+            { src: "image14.jpg", caption: "Pure elegance, pure Mahima." },
+            { src: "image15.jpg", caption: "Her laughter is the sweetest birthday melody." },
+            { src: "image16.jpg", caption: "Happiness looks best on her." },
+            { src: "image17.jpg", caption: "A beauty that needs no filter, just love." },
+            { src: "image18.jpg", caption: "Every moment with Mahima is picture-perfect." },
+            { src: "image19.jpg", caption: "The candles flicker, but she shines." },
+            { src: "image20.jpg", caption: "Every second spent with her is a celebration." },
+            { src: "image21.jpg", caption: "Glowing inside and out, like a birthday star." },
+            { src: "image22.jpg", caption: "A soul that shines even without the spotlight." },
+            { src: "image23.jpg", caption: "Beauty isn't just seen, it's felt." },
+            { src: "image24.jpg", caption: "She makes every moment magical." },
+            { src: "image25.jpg", caption: "A picture-perfect birthday queen." },
+            { src: "image26.jpg", caption: "More dazzling than any celebration lights." },
+            { src: "image27.jpg", caption: "An aura of happiness that fills the air." },
+            { src: "image28.jpg", caption: "Her glow is the true birthday sparkle." },
+            { src: "image29.jpg", caption: "Smiles, laughter, and Mahima – the perfect trio." },
+            { src: "image30.jpg", caption: "A birthday wish wrapped in warmth and love." },
+            { src: "image31.jpg", caption: "She doesn't need a crown to be a queen." },
+            { src: "image32.jpg", caption: "Her presence is the best celebration of all." },
+            { src: "image33.jpg", caption: "Golden memories, golden Mahima." },
+            { src: "image34.jpg", caption: "Her beauty outshines the candles." },
+            { src: "image35.jpg", caption: "She makes every birthday unforgettable." },
+            { src: "image36.jpg", caption: "Today and always, Mahima is the masterpiece." }
+        ];
 
         const photosPerPage = 6;
         let page = 1;
@@ -154,30 +176,17 @@
             const currentPhotos = photos.slice(start, end);
 
             currentPhotos.forEach(photo => {
-                const photoDiv = document.createElement("div");
-                photoDiv.classList.add("photo");
-                photoDiv.innerHTML = `
-                    <img src="${photo.src}" alt="${photo.caption}">
-                    <div class="caption">${photo.caption}</div>
-                `;
-                gallery.appendChild(photoDiv);
+                gallery.innerHTML += `
+                    <div class="photo">
+                        <img src="${photo.src}" alt="${photo.caption}">
+                        <div class="caption">${photo.caption}</div>
+                    </div>`;
             });
 
-            updateButtons();
-        }
-
-        function updateButtons() {
-            const pagination = document.getElementById("pagination");
-            pagination.innerHTML = "";
-
-            if (page < Math.ceil(photos.length / photosPerPage)) {
-                pagination.innerHTML = `
-                    <button id="prev" ${page === 1 ? "disabled" : ""}>Previous</button>
-                    <button id="next">Next</button>
-                `;
-            } else {
-                pagination.innerHTML = `<button class="continue-btn" onclick="window.location.href='thanks.html'">Continue</button>`;
-            }
+            document.getElementById("pagination").innerHTML = page < 6 
+                ? `<button id="prev" ${page === 1 ? "disabled" : ""}>Previous</button>
+                   <button id="next">Next</button>`
+                : `<button class="continue-btn" onclick="window.location.href='thanks.html'">Continue</button>`;
 
             document.getElementById("prev")?.addEventListener("click", () => { page--; displayPhotos(); });
             document.getElementById("next")?.addEventListener("click", () => { page++; displayPhotos(); });
